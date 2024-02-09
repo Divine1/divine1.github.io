@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en" data-critters-container><head>
+  <meta charset="utf-8">
+  <title>Appleblog</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>*{margin:0;box-sizing:border-box}.ab-blogTitle{font-weight:600;font-size:1.5rem}.ab-title{font-weight:600}.ab-pad-l-1{padding-left:1rem}.ab-hyphen-in-children>div{position:relative}.ab-hyphen-in-children>div:before{position:relative;content:"- "}
+</style><link rel="stylesheet" href="styles-KEE5WMWT.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-KEE5WMWT.css"></noscript><link rel="modulepreload" href="chunk-VY2TR5F5.js"><style ng-app-id="ng">[_nghost-ng-c53349313]{display:block}ul[_ngcontent-ng-c53349313]{list-style-type:none;padding:0;text-align:center}ul[_ngcontent-ng-c53349313]   li[_ngcontent-ng-c53349313]{display:inline-block;padding:.5rem}ul[_ngcontent-ng-c53349313]   li[_ngcontent-ng-c53349313]   span[_ngcontent-ng-c53349313]:hover{border-bottom:1px solid black;cursor:pointer}ul[_ngcontent-ng-c53349313]   li[_ngcontent-ng-c53349313]   span.active[_ngcontent-ng-c53349313]{border-bottom:1px solid black}</style></head>
+<body><!--nghm-->
+  <app-root _nghost-ng-c2283532919 ng-version="17.1.2" ngh="1" ng-server-context="ssg"><app-header _ngcontent-ng-c2283532919 _nghost-ng-c53349313 ngh="0"><ul _ngcontent-ng-c53349313><li _ngcontent-ng-c53349313><span _ngcontent-ng-c53349313 routerlink="/blog" tabindex="0">Blog</span></li><li _ngcontent-ng-c53349313><span _ngcontent-ng-c53349313 href routerlink="/aboutme" tabindex="0">About me</span></li></ul></app-header><router-outlet _ngcontent-ng-c2283532919></router-outlet><app-springbeanscopes _nghost-ng-c3675380461 ngh="0"><div _ngcontent-ng-c3675380461><div _ngcontent-ng-c3675380461 class="ab-blogTitle"> Spring bean scopes </div><div _ngcontent-ng-c3675380461> Bean scopes define the lifecycle and visibility of a bean within a Spring container </div><div _ngcontent-ng-c3675380461 class="ab-contentcontainer"><div _ngcontent-ng-c3675380461 class="ab-title">Singleton</div><div _ngcontent-ng-c3675380461 class="ab-content ab-pad-l-1 ab-hyphen-in-children"><div _ngcontent-ng-c3675380461>A single instance of the bean is created for the entire Spring container</div><div _ngcontent-ng-c3675380461>It is the default scope if not specified</div><div _ngcontent-ng-c3675380461>The Spring container manages the creation and destruction of the singleton bean</div><div _ngcontent-ng-c3675380461>Singleton-scoped beans are shared across all HTTP requests, and their lifecycle is managed by the Spring container</div><div _ngcontent-ng-c3675380461>It's crucial to ensure thread safety in singleton beans and be mindful of the shared state when designing components that are used across multiple requests</div></div><pre _ngcontent-ng-c3675380461 class="ab-pad-l-1">
+  @Component
+  public class MySingletonBean {
+      // Bean definition
+  }
+  </pre></div><div _ngcontent-ng-c3675380461 class="ab-contentcontainer"><div _ngcontent-ng-c3675380461 class="ab-title">Prototype Scope</div><div _ngcontent-ng-c3675380461 class="ab-content ab-pad-l-1 ab-hyphen-in-children"><div _ngcontent-ng-c3675380461> A new instance of the bean is created every time it is requested, and the Spring container does not manage the destruction of prototype-scoped beans </div><div _ngcontent-ng-c3675380461> It is the responsibility of the client code to release resources and manage the lifecycle </div><div _ngcontent-ng-c3675380461> It is often used for stateless or stateful beans that require a short lifecycle and should not be shared between different parts of the application </div></div><pre _ngcontent-ng-c3675380461 class="ab-pad-l-1">
+  @Component
+  @Scope("prototype")
+  public class MyPrototypeBean {
+      // Bean definition
+  }
+  
+  </pre></div><div _ngcontent-ng-c3675380461 class="ab-contentcontainer"><div _ngcontent-ng-c3675380461 class="ab-title">Request Scope</div><div _ngcontent-ng-c3675380461 class="ab-content ab-pad-l-1 ab-hyphen-in-children"><div _ngcontent-ng-c3675380461> A new instance of the bean is created for each HTTP request, and the instance is destroyed when the request is completed </div><div _ngcontent-ng-c3675380461> Suitable when you need to maintain stateful information during the processing of a single HTTP request. Each user request gets its own instance of the bean. Doesnot share state. </div><div _ngcontent-ng-c3675380461> The Spring container manages the creation and destruction of request-scoped beans, making it suitable for scenarios where resource cleanup is necessary at the end of each request </div><div _ngcontent-ng-c3675380461> Typically, request-scoped beans are not shared between threads, ensuring a level of thread safety within the context of a single HTTP request </div></div><pre _ngcontent-ng-c3675380461 class="ab-pad-l-1">
+  @Component
+  @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+  public class MyRequestScopedBean {
+      // Bean definition
+  }
+  </pre></div><div _ngcontent-ng-c3675380461 class="ab-contentcontainer"><div _ngcontent-ng-c3675380461 class="ab-title">Session Scope</div><div _ngcontent-ng-c3675380461 class="ab-content ab-pad-l-1 ab-hyphen-in-children"><div _ngcontent-ng-c3675380461> A new instance of the bean is created for each HTTP session </div><div _ngcontent-ng-c3675380461> The instance persists and remains active throughout the duration of the user's session </div><div _ngcontent-ng-c3675380461> Suitable for maintaining stateful information across multiple requests within the same user session </div><div _ngcontent-ng-c3675380461> The Spring container manages the creation and destruction of session-scoped beans </div><div _ngcontent-ng-c3675380461> Resources associated with the bean are released when the user session ends or times out </div><div _ngcontent-ng-c3675380461> Session-scoped beans are not inherently thread-safe. If multiple threads simultaneously access the same user session, they might access the same instance, leading to potential thread safety issues </div></div><pre _ngcontent-ng-c3675380461 class="ab-pad-l-1">
+  @Component
+  @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+  public class MySessionScopedBean {
+      // Bean definition
+  }
+  </pre></div></div></app-springbeanscopes><!----></app-root>
+<script src="polyfills-RX4V3J3S.js" type="module"></script><script src="main-HQUTL474.js" type="module"></script>
+
+<script id="ng-state" type="application/json">{"__nghData__":[{},{"c":{"1":[{"i":"c3675380461","r":1}]}}]}</script></body></html>
